@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: store-management-api
+
+    logging:
+      level:
+        root: INFO
+        com.apintea.store: DEBUG
+
