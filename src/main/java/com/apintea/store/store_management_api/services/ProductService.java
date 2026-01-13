@@ -22,6 +22,9 @@ public class ProductService {
     private final ProductMapper productMapper;
 
     public Product addProduct(Product product) {
+        if (product == null) {
+            throw new IllegalArgumentException("Product cannot be null!");
+        }
         log.info("Adding product: {}", product.getName());
 
         ProductEntity entityToSave = productMapper.toEntity(product);
@@ -32,7 +35,7 @@ public class ProductService {
     }
 
 
-    public Product findProduct(UUID productId) {
+    public Product getProduct(UUID productId) {
         return productRepository.findById(productId)
                 .map(productMapper::toProduct)
                 .orElseThrow(() ->
@@ -40,18 +43,26 @@ public class ProductService {
                 );
     }
 
-    public List<Product> findAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll().stream().map(productMapper::toProduct).collect(Collectors.toList());
     }
 
     public UUID deleteProduct(UUID productId) {
+        if (!productRepository.existsById(productId)) {
+            throw new ProductNotFoundException(
+                    "Product not found with id: " + productId);
+        }
+
         productRepository.deleteById(productId);
         log.info("Product with {} has been deleted.", productId);
         return productId;
     }
 
     public Product changePrice(UUID productId, Double newPrice) {
-        Product product = findProduct(productId);
+        if (newPrice == null || newPrice < 0) {
+            throw new IllegalArgumentException("The price must be greater or equal to 0");
+        }
+        Product product = getProduct(productId);
         product.setPrice(newPrice);
         log.info("Updated price for product {}", productId);
         productRepository.save(productMapper.toEntity(product));

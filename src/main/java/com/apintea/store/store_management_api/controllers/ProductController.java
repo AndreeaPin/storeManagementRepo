@@ -1,5 +1,6 @@
 package com.apintea.store.store_management_api.controllers;
 
+import com.apintea.store.store_management_api.exceptions.ProductNotFoundException;
 import com.apintea.store.store_management_api.model.Product;
 import com.apintea.store.store_management_api.services.ProductService;
 import jakarta.validation.Valid;
@@ -21,31 +22,47 @@ public class ProductController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Product> addProduct(@RequestBody @Valid Product product) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProduct(product));
+    public ResponseEntity<String> addProduct(@RequestBody @Valid Product product) {
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProduct(product).getId().toString());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public ResponseEntity<Product> getProduct(@PathVariable UUID id) {
-        return new ResponseEntity<>(productService.findProduct(id), HttpStatus.OK);
+    public ResponseEntity<String> getProduct(@PathVariable UUID id) {
+        try {
+            return ResponseEntity.ok(productService.getProduct(id).getId().toString());
+        } catch (ProductNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @GetMapping()
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<List<Product>> getAllProducts() {
-        return ResponseEntity.ok(productService.findAllProducts());
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @PutMapping("/{id}/price")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Product> updatePrice(@PathVariable UUID id, @RequestParam Double price) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.changePrice(id, price));
+    public ResponseEntity<String> updatePrice(@PathVariable UUID id, @RequestParam Double price) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productService.changePrice(id, price).getId().toString());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public UUID deleteProduct(@PathVariable UUID id) {
-        return productService.deleteProduct(id);
+    public ResponseEntity<String> deleteProduct(@PathVariable UUID id) {
+        try {
+            return ResponseEntity.ok(productService.deleteProduct(id).toString());
+        } catch (ProductNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }
