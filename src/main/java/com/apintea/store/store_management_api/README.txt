@@ -13,8 +13,8 @@ Backend-only REST API for managing store products.
 ## Authentication
 | User  | Password | Role  |
 |------|----------|-------|
-| admin | admin123 | ADMIN |
-| user  | user123  | USER  |
+| apin | Password1 | ADMIN | USER |
+| john  | Password2  | USER  |
 
 ## Endpoints
 - POST `/api/products` (ADMIN)

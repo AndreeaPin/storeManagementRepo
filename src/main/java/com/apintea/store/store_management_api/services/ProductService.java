@@ -1,5 +1,6 @@
 package com.apintea.store.store_management_api.services;
 
+import com.apintea.store.store_management_api.entities.ProductEntity;
 import com.apintea.store.store_management_api.exceptions.ProductNotFoundException;
 import com.apintea.store.store_management_api.mappers.ProductMapper;
 import com.apintea.store.store_management_api.model.Product;
@@ -22,9 +23,14 @@ public class ProductService {
 
     public Product addProduct(Product product) {
         log.info("Adding product: {}", product.getName());
-        productRepository.save(productMapper.toEntity(product));
-        return product;
+
+        ProductEntity entityToSave = productMapper.toEntity(product);
+
+        ProductEntity savedEntity = productRepository.save(entityToSave);
+
+        return productMapper.toProduct(savedEntity);
     }
+
 
     public Product findProduct(UUID productId) {
         return productRepository.findById(productId)
