@@ -2,6 +2,7 @@ package com.apintea.store.store_management_api.model;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.util.UUID;
@@ -23,6 +24,6 @@ public class Product {
     private Double price;
 
     @NotNull
-    @Min(0)
+    @PositiveOrZero
     private Integer quantity;
 }

@@ -29,3 +29,8 @@ Two in-memory users are configured:
 - GET `/api/products/{id}` (ADMIN, USER)
 - PUT `/api/products/{id}/price` (ADMIN)
 - DELETE `/api/products/{id}` (ADMIN)
+
+## TESTING
+
+- Bruno -> Use store-managmenet-api-test-bruno.json collection
+- Postman -> store-management-api-test-postman.json collection

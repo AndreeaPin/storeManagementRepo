@@ -39,7 +39,7 @@ public class ProductService {
         return productRepository.findById(productId)
                 .map(productMapper::toProduct)
                 .orElseThrow(() ->
-                        new ProductNotFoundException("Product not found with id: " + productId)
+                        new ProductNotFoundException("Product not found, id: " + productId)
                 );
     }
 
@@ -50,7 +50,7 @@ public class ProductService {
     public UUID deleteProduct(UUID productId) {
         if (!productRepository.existsById(productId)) {
             throw new ProductNotFoundException(
-                    "Product not found with id: " + productId);
+                    "Product not found, id: " + productId);
         }
 
         productRepository.deleteById(productId);

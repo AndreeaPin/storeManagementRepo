@@ -1,0 +1,564 @@
+{
+  "name": "store-management-api-test",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "CreateProduct as Admin",
+      "filename": "CreateProduct as Admin.bru",
+      "seq": 1,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"name\": \"Chocolate3\",\n  \"price\": 70.3, \n  \"quantity\": 46\n}\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "UpdateProduct as Admin",
+      "filename": "UpdateProduct as Admin.bru",
+      "seq": 2,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products/386ba91a-6132-42cf-9fbe-81367aa15db1/price?price=100",
+        "method": "PUT",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [
+          {
+            "name": "price",
+            "value": "100",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "json",
+          "json": "",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "DeleteProduct as Admin",
+      "filename": "DeleteProduct as Admin.bru",
+      "seq": 3,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products/386ba91a-6132-42cf-9fbe-81367aa15db1",
+        "method": "DELETE",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "CreateProduct as User",
+      "filename": "CreateProduct as User.bru",
+      "seq": 4,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"name\": \"Chocolate2\",\n  \"price\": 20.3, \n  \"quantity\": 4\n}\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "john",
+            "password": "Password2"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "UpdateProduct as User",
+      "filename": "UpdateProduct as User.bru",
+      "seq": 5,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products/33acb3f6-dce0-44d4-8a86-24000b267635/price?price=100",
+        "method": "PUT",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [
+          {
+            "name": "price",
+            "value": "100",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "json",
+          "json": "",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "john",
+            "password": "Password2"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "DeleteProduct as User",
+      "filename": "DeleteProduct as User.bru",
+      "seq": 6,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products/07b09d4c-ab14-4136-bda1-98bdec307aa2",
+        "method": "DELETE",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Get Product as Admin",
+      "filename": "Get Product as Admin.bru",
+      "seq": 7,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products/386ba91a-6132-42cf-9fbe-81367aa15db1",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Get Product as User",
+      "filename": "Get Product as User.bru",
+      "seq": 9,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products/e72a3afc-0971-46c9-be78-b11d6dcb2305",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "john",
+            "password": "Password2"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Get All Product as Admin",
+      "filename": "Get All Product as Admin.bru",
+      "seq": 10,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Get All Product as User",
+      "filename": "Get All Product as User.bru",
+      "seq": 11,
+      "settings": {
+        "encodeUrl": true,
+        "timeout": 0
+      },
+      "tags": [],
+      "examples": [],
+      "request": {
+        "url": "http://localhost:8080/api/products",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Accept",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "Basic YXBpbjpQYXNzd29yZDE=",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "apin",
+            "password": "Password1"
+          }
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "store-management-api-test",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0,
+    "filesCount": 0
+  },
+  "exportedAt": "2026-01-14T21:36:15.920Z",
+  "exportedUsing": "Bruno/3.0.2"
+}
